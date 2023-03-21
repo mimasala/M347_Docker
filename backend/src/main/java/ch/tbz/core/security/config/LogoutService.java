@@ -1,6 +1,6 @@
 package ch.tbz.core.security.config;
 
-import ch.tbz.core.security.token.TokenRepository;
+import ch.tbz.core.security.modl.token.TokenRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
