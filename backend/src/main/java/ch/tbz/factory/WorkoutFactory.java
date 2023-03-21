@@ -7,6 +7,8 @@ public class WorkoutFactory implements IWorkoutFactory{
 
     @Override
     public Workout create(Blueprint b) {
-        return null;
+        Workout workout = new Workout(b, b.getUser());
+        b.addGenerated(workout);
+        return workout;
     }
 }

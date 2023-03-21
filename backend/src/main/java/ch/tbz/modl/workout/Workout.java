@@ -1,12 +1,14 @@
 package ch.tbz.modl.workout;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import ch.tbz.modl.blueprint.Blueprint;
+import ch.tbz.modl.user.User;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
 
 @Data
 @Builder
@@ -16,14 +18,28 @@ import lombok.NoArgsConstructor;
 @Table(name = "_workout")
 public class Workout {
 
+    public Workout(Blueprint b, User u){
+        this.blueprint = b;
+        this.user = u;
+    }
+
     @Id
     private int id;
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    private boolean active = true;
 
-    public int getId() {
-        return id;
+    private LocalDateTime finishedAt;
+
+    @ManyToOne
+    @JoinColumn(name = "blueprint_id")
+    private Blueprint blueprint;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    public void finish(){
+        active = false;
+        finishedAt = LocalDateTime.now();
     }
 }
