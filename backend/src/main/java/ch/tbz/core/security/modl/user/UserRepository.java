@@ -1,4 +1,4 @@
-package ch.tbz.core.security.user;
+package ch.tbz.core.security.modl.user;
 
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
