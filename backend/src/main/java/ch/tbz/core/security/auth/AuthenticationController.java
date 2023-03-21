@@ -1,4 +1,4 @@
-package com.alibou.security.auth;
+package ch.tbz.core.security.auth;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

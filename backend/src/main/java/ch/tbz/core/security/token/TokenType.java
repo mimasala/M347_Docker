@@ -1,4 +1,4 @@
-package com.alibou.security.token;
+package ch.tbz.core.security.token;
 
 public enum TokenType {
   BEARER

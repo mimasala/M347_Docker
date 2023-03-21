@@ -1,6 +1,6 @@
-package com.alibou.security.config;
+package ch.tbz.core.security.config;
 
-import com.alibou.security.user.UserRepository;
+import ch.tbz.core.security.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

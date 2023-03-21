@@ -1,12 +1,12 @@
-package com.alibou.security.auth;
+package ch.tbz.core.security.auth;
 
-import com.alibou.security.config.JwtService;
-import com.alibou.security.token.Token;
-import com.alibou.security.token.TokenRepository;
-import com.alibou.security.token.TokenType;
-import com.alibou.security.user.Role;
-import com.alibou.security.user.User;
-import com.alibou.security.user.UserRepository;
+import ch.tbz.core.security.token.Token;
+import ch.tbz.core.security.token.TokenRepository;
+import ch.tbz.core.security.token.TokenType;
+import ch.tbz.core.security.user.Role;
+import ch.tbz.core.security.user.User;
+import ch.tbz.core.security.user.UserRepository;
+import ch.tbz.core.security.config.JwtService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

@@ -1,4 +1,4 @@
-package com.alibou.security.user;
+package ch.tbz.core.security.user;
 
 public enum Role {
 

@@ -1,6 +1,6 @@
-package com.alibou.security.token;
+package ch.tbz.core.security.token;
 
-import com.alibou.security.user.User;
+import ch.tbz.core.security.user.User;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
