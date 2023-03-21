@@ -1,6 +1,8 @@
-package ch.tbz.core.security.modl.user;
+package ch.tbz.modl.user;
 
-import ch.tbz.core.security.modl.token.Token;
+import ch.tbz.modl.blueprint.Blueprint;
+import ch.tbz.modl.token.Token;
+import ch.tbz.modl.workout.Workout;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -39,6 +41,9 @@ public class User implements UserDetails {
 
   @OneToMany(mappedBy = "user")
   private List<Token> tokens;
+
+  @OneToMany(mappedBy = "user")
+  private List<Workout> workouts;
 
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {

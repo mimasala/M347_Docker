@@ -1,6 +1,6 @@
-package ch.tbz.core.security.modl.token;
+package ch.tbz.modl.token;
 
-import ch.tbz.core.security.modl.user.User;
+import ch.tbz.modl.user.User;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
