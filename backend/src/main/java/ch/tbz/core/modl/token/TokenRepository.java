@@ -1,4 +1,4 @@
-package ch.tbz.modl.token;
+package ch.tbz.core.modl.token;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,6 +1,6 @@
 package ch.tbz.core.security.config;
 
-import ch.tbz.modl.token.TokenRepository;
+import ch.tbz.core.modl.token.TokenRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

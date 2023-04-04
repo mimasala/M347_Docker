@@ -1,7 +1,7 @@
-package ch.tbz.factory;
+package ch.tbz.core.security.factory;
 
-import ch.tbz.modl.blueprint.Blueprint;
-import ch.tbz.modl.workout.Workout;
+import ch.tbz.core.modl.blueprint.Blueprint;
+import ch.tbz.core.modl.workout.Workout;
 
 public class WorkoutFactory implements IWorkoutFactory{
 

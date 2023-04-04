@@ -1,4 +1,4 @@
-package ch.tbz.modl.token;
+package ch.tbz.core.modl.token;
 
 public enum TokenType {
   BEARER

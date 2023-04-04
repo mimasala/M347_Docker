@@ -1,4 +1,4 @@
-package ch.tbz.modl.user;
+package ch.tbz.core.modl.user;
 
 public enum Role {
 

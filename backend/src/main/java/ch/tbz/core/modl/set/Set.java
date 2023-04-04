@@ -1,6 +1,6 @@
-package ch.tbz.modl.set;
+package ch.tbz.core.modl.set;
 
-import ch.tbz.modl.exercise.Exercise;
+import ch.tbz.core.modl.exercise.Exercise;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

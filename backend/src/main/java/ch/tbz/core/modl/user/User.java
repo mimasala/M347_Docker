@@ -1,8 +1,8 @@
-package ch.tbz.modl.user;
+package ch.tbz.core.modl.user;
 
-import ch.tbz.modl.blueprint.Blueprint;
-import ch.tbz.modl.token.Token;
-import ch.tbz.modl.workout.Workout;
+import ch.tbz.core.modl.blueprint.Blueprint;
+import ch.tbz.core.modl.token.Token;
+import ch.tbz.core.modl.workout.Workout;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;

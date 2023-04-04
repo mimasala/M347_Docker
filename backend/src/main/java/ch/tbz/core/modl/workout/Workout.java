@@ -1,7 +1,7 @@
-package ch.tbz.modl.workout;
+package ch.tbz.core.modl.workout;
 
-import ch.tbz.modl.blueprint.Blueprint;
-import ch.tbz.modl.user.User;
+import ch.tbz.core.modl.blueprint.Blueprint;
+import ch.tbz.core.modl.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
