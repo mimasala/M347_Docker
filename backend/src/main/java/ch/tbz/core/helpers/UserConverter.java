@@ -1,6 +1,6 @@
 package ch.tbz.core.helpers;
 
-import ch.tbz.core.modl.user.User;
+import ch.tbz.domain.user.User;
 
 import java.security.Principal;
 

@@ -1,11 +1,11 @@
 package ch.tbz.core.security.auth;
 
-import ch.tbz.core.modl.token.Token;
-import ch.tbz.core.modl.token.TokenRepository;
-import ch.tbz.core.modl.token.TokenType;
-import ch.tbz.core.modl.user.Role;
-import ch.tbz.core.modl.user.User;
-import ch.tbz.core.modl.user.UserRepository;
+import ch.tbz.domain.token.Token;
+import ch.tbz.domain.token.TokenRepository;
+import ch.tbz.domain.token.TokenType;
+import ch.tbz.domain.user.Role;
+import ch.tbz.domain.user.User;
+import ch.tbz.domain.user.UserRepository;
 import ch.tbz.core.security.config.JwtService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;

@@ -1,7 +1,7 @@
 package ch.tbz.core.security.factory;
 
-import ch.tbz.core.modl.blueprint.Blueprint;
-import ch.tbz.core.modl.user.User;
+import ch.tbz.domain.blueprint.Blueprint;
+import ch.tbz.domain.user.User;
 
 public interface IBluepruntFactory {
     Blueprint create(User u);

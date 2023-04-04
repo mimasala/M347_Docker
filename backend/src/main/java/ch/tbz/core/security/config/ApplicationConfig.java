@@ -1,6 +1,6 @@
 package ch.tbz.core.security.config;
 
-import ch.tbz.core.modl.user.UserRepository;
+import ch.tbz.domain.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

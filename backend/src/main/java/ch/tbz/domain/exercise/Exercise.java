@@ -1,6 +1,6 @@
-package ch.tbz.core.modl.exercise;
+package ch.tbz.domain.exercise;
 
-import ch.tbz.core.modl.set.Set;
+import ch.tbz.domain.set.Set;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;

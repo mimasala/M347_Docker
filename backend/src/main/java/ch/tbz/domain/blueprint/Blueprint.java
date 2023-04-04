@@ -1,7 +1,7 @@
-package ch.tbz.core.modl.blueprint;
+package ch.tbz.domain.blueprint;
 
-import ch.tbz.core.modl.user.User;
-import ch.tbz.core.modl.workout.Workout;
+import ch.tbz.domain.user.User;
+import ch.tbz.domain.workout.Workout;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,7 +24,7 @@ public class Blueprint {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany(mappedBy = "blueprint")
+    @OneToMany
     private List<Workout> generated;
 
     public void addGenerated(Workout w){
