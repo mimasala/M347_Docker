@@ -14,8 +14,9 @@ import java.util.List;
 @Table(name = "_exercise")
 public class Exercise {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
+
     private String name;
     private String type;
     private String muscle;
@@ -26,5 +27,4 @@ public class Exercise {
 
     @OneToMany
     private List<Set> refSets;
-
 }
