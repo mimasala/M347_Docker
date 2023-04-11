@@ -18,14 +18,20 @@ import java.util.List;
 @Table(name = "_blueprint")
 public class Blueprint {
     @Id
+    @GeneratedValue
     private int id;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
+    private int exerciseCount;
+
     @OneToMany
     private List<Workout> generated;
+
+    @OneToMany
+    private List<ExerciseType> types;
 
     public void addGenerated(Workout w){
         generated.add(w);
