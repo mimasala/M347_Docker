@@ -1,33 +1,28 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import {Button} from "@mui/material";
+
 
 function Home() {
     const [count, setCount] = useState(0)
 
     return (
         <div className="App">
-            <div>
-                <a href="https://vitejs.dev" target="_blank">
-                    <img src={viteLogo} className="logo" alt="Vite logo" />
-                </a>
-                <a href="https://reactjs.org" target="_blank">
-                    <img src={reactLogo} className="logo react" alt="React logo" />
+            <div id={"start_div_container"}>
+                <a id={"start_workout_link"} href="/app">
+                    <Button id={"btn_start_workout"} variant="contained">Start Workout</Button>
                 </a>
             </div>
-            <h1>Vite + React</h1>
-            <div className="card">
-                <button onClick={() => setCount((count) => count + 1)}>
-                    count is {count}
-                </button>
-                <p>
-                    Edit <code>src/App.tsx</code> and save to test HMR
-                </p>
+            <div id={"workout_div_container"}>
+                <div id={"history_container"}>
+                    <Button id={"btn_history"} variant="contained">History</Button>
+                </div>
+                <div id={"workout_container"}>
+                    <a id={"workout_link"} href="/app">
+                        <Button id={"btn_workout"} variant="contained">Workout</Button>
+                    </a>
+                </div>
             </div>
-            <p className="read-the-docs">
-                Click on the Vite and React logos to learn more
-            </p>
         </div>
     )
 }

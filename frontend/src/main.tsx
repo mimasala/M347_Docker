@@ -9,6 +9,7 @@ import {
 import Home from "./Home";
 import App from './App'
 import './index.css'
+import './App.css'
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@emotion/react';
 import { darkTheme } from './themes/dark';
@@ -19,15 +20,19 @@ const router = createBrowserRouter([
         element: <Root />,
         errorElement: <ErrorPage />,
     },
+    {
+        path: "home",
+        element: <Home />,
+    },
+    {
+        path: "app",
+        element: <App />,
+    },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <RouterProvider router={router} />
     <CssBaseline/>
-    <ThemeProvider theme={darkTheme}>
-      <App />
-      <Home />
-    </ThemeProvider>
   </React.StrictMode>,
 )

@@ -1,0 +1,43 @@
+.App {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#start_div_container {
+    margin-top: 40vh;
+}
+
+a#start_workout_link {
+    text-decoration: none;
+}
+
+#workout_div_container {
+    margin-top: 40vh;
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+}
+
+#btn_start_workout {
+    width: 200px;
+    height: 75px;
+}
+
+#btn_history {
+    width: 150px;
+    height: 50px;
+    margin-left: 5px;
+}
+
+a#workout_link {
+    text-decoration: none;
+}
+
+#btn_workout {
+    width: 150px;
+    height: 50px;
+    margin-right: 5px;
+}

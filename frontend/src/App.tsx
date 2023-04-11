@@ -8,7 +8,13 @@ function App() {
 
   return (
     <div className="App">
-      <Button>Mischa</Button>
+        <div id={"btns"}>
+            <Button id={"btn_custom"} variant="contained">Custom</Button>
+            <Button id={"btn_push"} variant="contained">Push</Button>
+            <Button id={"btn_pull"} variant="contained">Pull</Button>
+            <Button id={"btn_leg"} variant="contained">Leg</Button>
+        </div>
+
     </div>
   )
 }
