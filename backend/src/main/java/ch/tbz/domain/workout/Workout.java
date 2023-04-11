@@ -1,6 +1,7 @@
 package ch.tbz.domain.workout;
 
 import ch.tbz.domain.blueprint.Blueprint;
+import ch.tbz.domain.set.Set;
 import ch.tbz.domain.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -9,6 +10,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Builder
@@ -29,6 +31,9 @@ public class Workout {
     private boolean active = true;
 
     private LocalDateTime finishedAt;
+
+    @OneToMany
+    private List<Set> sets;
 
     @ManyToOne
     @JoinColumn(name = "blueprint_id")
