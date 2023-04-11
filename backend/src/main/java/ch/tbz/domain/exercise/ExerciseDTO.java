@@ -1,6 +1,6 @@
 package ch.tbz.domain.exercise;
 
-public class ExcerciseDTO {
+public class ExerciseDTO {
     public String name;
     public String type;
     public String muscle;

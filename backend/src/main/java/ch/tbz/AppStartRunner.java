@@ -1,20 +1,17 @@
 package ch.tbz;
 
-import ch.tbz.domain.exercise.ExcerciseRepository;
-import org.modelmapper.ModelMapper;
+import ch.tbz.domain.exercise.ExerciseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 @Component
 public class AppStartRunner implements CommandLineRunner {
-    private final ExcerciseRepository excerciseRepository;
-    private final ModelMapper modelMapper;
+    private final ExerciseRepository exerciseRepository;
 
     @Autowired
-    public AppStartRunner(ExcerciseRepository excerciseRepository, ModelMapper modelMapper) {
-        this.excerciseRepository = excerciseRepository;
-        this.modelMapper = modelMapper;
+    public AppStartRunner(ExerciseRepository exerciseRepository) {
+        this.exerciseRepository = exerciseRepository;
     }
 
     @Override
