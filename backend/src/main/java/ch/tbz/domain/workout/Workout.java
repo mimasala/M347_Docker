@@ -28,8 +28,8 @@ public class Workout {
     @Id
     private int id;
 
+    private Rating rating;
     private boolean active = true;
-
     private LocalDateTime finishedAt;
 
     @OneToMany
