@@ -1,27 +1,19 @@
 package ch.tbz;
 
-import ch.tbz.domain.exercise.ExcerciseDTO;
-import ch.tbz.domain.exercise.Exercise;
-import ch.tbz.domain.exercise.ExerciseRepo;
-import com.google.gson.Gson;
+import ch.tbz.domain.exercise.ExcerciseRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.Arrays;
-
 @Component
 public class AppStartRunner implements CommandLineRunner {
-    private final ExerciseRepo exerciseRepo;
+    private final ExcerciseRepository excerciseRepository;
     private final ModelMapper modelMapper;
 
     @Autowired
-    public AppStartRunner(ExerciseRepo exerciseRepo, ModelMapper modelMapper) {
-        this.exerciseRepo = exerciseRepo;
+    public AppStartRunner(ExcerciseRepository excerciseRepository, ModelMapper modelMapper) {
+        this.excerciseRepository = excerciseRepository;
         this.modelMapper = modelMapper;
     }
 
