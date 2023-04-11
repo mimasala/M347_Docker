@@ -2,8 +2,8 @@ package ch.tbz.core.factory;
 
 import ch.tbz.domain.blueprint.Blueprint;
 import ch.tbz.domain.blueprint.ExerciseType;
-import ch.tbz.domain.exercise.ExcerciseRepository;
 import ch.tbz.domain.exercise.Exercise;
+import ch.tbz.domain.exercise.ExerciseRepository;
 import ch.tbz.domain.set.Set;
 import ch.tbz.domain.workout.Rating;
 import ch.tbz.domain.workout.Workout;
@@ -17,10 +17,10 @@ import java.util.Optional;
 @Component
 public class WorkoutFactory implements IWorkoutFactory{
 
-    private final ExcerciseRepository exerciseRepo;
+    private final ExerciseRepository exerciseRepo;
 
     @Autowired
-    public WorkoutFactory(ExcerciseRepository exerciseRepo) {
+    public WorkoutFactory(ExerciseRepository exerciseRepo) {
         this.exerciseRepo = exerciseRepo;
     }
 
