@@ -1,4 +1,6 @@
 spring:
+  sql.init.mode: always
+  jpa.defer-datasource-initialization: true
   datasource:
     url: jdbc:postgresql://localhost:5432/postgres
     username: pgWorkout

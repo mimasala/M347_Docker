@@ -21,9 +21,10 @@ public class Exercise {
     private String muscle;
     private String equipment;
     private String difficulty;
+    @Column(columnDefinition = "TEXT")
     private String instructions;
 
-    @OneToMany(mappedBy = "exercise")
+    @OneToMany
     private List<Set> refSets;
 
 }
