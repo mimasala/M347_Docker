@@ -1,6 +1,5 @@
 package ch.tbz.domain.exercise;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -8,11 +7,9 @@ import java.util.List;
 @Service
 public class ExerciseService {
     private final ExerciseRepository exerciseRepository;
-    private final ModelMapper modelMapper;
 
-    public ExerciseService(ExerciseRepository exerciseRepository, ModelMapper modelMapper) {
+    public ExerciseService(ExerciseRepository exerciseRepository) {
         this.exerciseRepository = exerciseRepository;
-        this.modelMapper = modelMapper;
     }
 
     public List<Exercise> getExercises() {

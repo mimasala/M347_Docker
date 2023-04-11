@@ -1,7 +1,6 @@
 package ch.tbz;
 
 import ch.tbz.domain.exercise.ExerciseRepository;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -9,12 +8,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class AppStartRunner implements CommandLineRunner {
     private final ExerciseRepository exerciseRepository;
-    private final ModelMapper modelMapper;
 
     @Autowired
-    public AppStartRunner(ExerciseRepository exerciseRepository, ModelMapper modelMapper) {
+    public AppStartRunner(ExerciseRepository exerciseRepository) {
         this.exerciseRepository = exerciseRepository;
-        this.modelMapper = modelMapper;
     }
 
     @Override
