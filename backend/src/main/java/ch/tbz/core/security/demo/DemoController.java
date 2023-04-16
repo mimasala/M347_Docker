@@ -18,5 +18,4 @@ public class DemoController {
     User u = UserConverter.convert(p);
     return ResponseEntity.ok("Hello from secured endpoint" + u.getFirstname());
   }
-
 }

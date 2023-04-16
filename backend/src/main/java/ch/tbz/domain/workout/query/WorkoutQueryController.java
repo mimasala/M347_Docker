@@ -29,4 +29,11 @@ public class WorkoutQueryController {
         Page<Workout> workouts = workoutQueryService.findAll(PageRequest.of(page, size));
         return ResponseEntity.ok(workouts);
     }
+    @GetMapping("/search")
+    public ResponseEntity<Page<Workout>> searchWorkouts(@RequestParam String search,
+                                                       @RequestParam Integer page,
+                                                       @RequestParam Integer size) {
+        Page<Workout> workouts = workoutQueryService.search(search, PageRequest.of(page, size));
+        return ResponseEntity.ok(workouts);
+    }
 }

@@ -20,4 +20,8 @@ public class WorkoutQueryService {
     public Page<Workout> findAll(PageRequest of) {
         return workoutRepository.findAll(of);
     }
+
+    public Page<Workout> search(String search, PageRequest of) {
+        return workoutRepository.findAllByNameContainingIgnoreCase(search, of);
+    }
 }

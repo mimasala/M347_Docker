@@ -28,6 +28,8 @@ public class Workout {
     @Id
     private Long id;
 
+    private String name;
+
     private Rating rating;
     private boolean active = true;
     private LocalDateTime finishedAt;
