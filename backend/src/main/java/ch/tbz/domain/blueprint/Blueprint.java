@@ -19,7 +19,7 @@ import java.util.List;
 public class Blueprint {
     @Id
     @GeneratedValue
-    private int id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

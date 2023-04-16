@@ -17,9 +17,9 @@ public class Set {
     @Id
     private Long id;
 
-    private int setCount;
-    private int repCount;
-    private int weight;
+    private Integer setCount;
+    private Integer repCount;
+    private Double weight;
 
     @ManyToOne
     @JoinColumn(name = "exercise_id")

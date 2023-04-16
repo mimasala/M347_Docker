@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Component
@@ -28,27 +29,60 @@ public class WorkoutFactory implements IWorkoutFactory{
     public Workout create(Blueprint b) {
         Workout workout = Workout.builder()
                 .user(b.getUser())
-                .sets(GenerateSets(GetExercisesByType(b.getTypes()), b))
+                .sets(generateSets(GetExercisesByType(b.getTypes()), b))
                 .build();
         b.addGenerated(workout);
         return workout;
     }
 
-    private List<Set> GenerateSets(List<Exercise> exercises, Blueprint blueprint){
+    private List<Set> generateSets(List<Exercise> exercises, Blueprint blueprint){
         List<Set> sets = new ArrayList<>();
         List<Workout> generated = blueprint.getGenerated();
         Workout previousWorkout = generated.get(generated.size() - 1);
-        for (Exercise exercise:
-             exercises) {
-            sets.add(GenerateSet(exercise, blueprint, previousWorkout));
+        for (Exercise exercise: exercises) {
+            sets.add(generateSet(exercise, blueprint, previousWorkout));
         }
 
         return sets;
     }
 
-    private Set GenerateSet(Exercise e, Blueprint blueprint, Workout previous){
+    private Set generateSet(Exercise e, Blueprint blueprint, Workout previous){ // TODO: ich chegg bluepring immernonig
         Rating rating = previous.getRating();
-        //TODO: Go **** yourself
+        Set previousSet = getSetFromPreviousWorkout(previous, e);
+        if (rating.equals(Rating.Easy)){
+            return progressiveOverloadedSet(e, previousSet);
+        }
+        if (rating.equals(Rating.Medium)){
+            return previousSet;
+        }
+        return deProgressiveOverloadedSet(e, previousSet);
+    }
+
+    private Set deProgressiveOverloadedSet(Exercise e, Set previousSet){
+        return Set.builder()
+                .setCount(previousSet.getSetCount())
+                .weight(previousSet.getRepCount() == 12 ? previousSet.getWeight() + 2.5 : previousSet.getWeight())
+                .repCount(previousSet.getRepCount() == 12 ? 8 : previousSet.getRepCount() + 2)
+                .exercise(e)
+                .build();
+    }
+
+    private Set progressiveOverloadedSet(Exercise e, Set previousSet){
+        return Set.builder()
+                .setCount(previousSet.getSetCount())
+                .weight(previousSet.getRepCount() == 12 ? previousSet.getWeight() + 2.5 : previousSet.getWeight())
+                .repCount(previousSet.getRepCount() == 12 ? 8 : previousSet.getRepCount() + 2)
+                .exercise(e)
+                .build();
+    }
+
+    private Set getSetFromPreviousWorkout(Workout previous, Exercise e){
+        Optional<Set> set = previous
+                .getSets()
+                .stream()
+                .filter(s -> s.getExercise().equals(e))
+                .findFirst();
+        return set.orElse(null);
     }
 
     private List<Exercise> GetExercisesByType(List<ExerciseType> types){

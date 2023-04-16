@@ -26,7 +26,7 @@ public class Workout {
     }
 
     @Id
-    private int id;
+    private Long id;
 
     private Rating rating;
     private boolean active = true;
