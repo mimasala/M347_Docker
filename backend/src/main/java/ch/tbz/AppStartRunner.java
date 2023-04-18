@@ -2,6 +2,7 @@ package ch.tbz;
 
 import ch.tbz.domain.exercise.ExerciseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -14,8 +15,12 @@ public class AppStartRunner implements CommandLineRunner {
         this.exerciseRepository = exerciseRepository;
     }
 
+
+    @Value("${spring.datasource.url}")
+    private String dbUrl;
     @Override
     public void run(String... args) throws Exception {
+        System.out.println("DB URL: " + dbUrl);
         int offset = 0;
         try {
 //            while (true) {

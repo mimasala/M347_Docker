@@ -1,0 +1,63 @@
+services:
+  postgres:
+    container_name: workoutpg
+    image: postgres
+    environment:
+      POSTGRES_USER: pgWorkout
+      POSTGRES_PASSWORD: jhhjhjghgdgfghkjgfghjkkhgfhjkljhgfghjkljhgfhjklelbgajhvapirgulökhabrgönNAEÖVBJN123
+      PGDATA: /data/postgres
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - postgres
+    restart: unless-stopped
+
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+    ports:
+      - "5050:80"
+    networks:
+      - postgres
+    restart: unless-stopped
+  workout_frontend:
+    image: node:alpine
+    container_name: workout_frontend
+    entrypoint: /bin/sh
+    ports:
+      - "8000:8000"
+    working_dir: /srv/app
+    volumes:
+      - ./frontend:/srv/app
+    tty: true
+
+  workout_backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: workout_backend
+    ports:
+      - "8080:8080"
+    depends_on:
+      - pgadmin
+      - postgres
+    environment:
+      - spring.datasource.url=jdbc:postgresql://workoutpg:5432/postgres
+
+
+
+networks:
+  postgres:
+    driver: bridge
+
+volumes:
+  postgres:
+  pgadmin:
