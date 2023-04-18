@@ -1,0 +1,26 @@
+div#btns{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    margin-top: 35%;
+}
+
+Button {
+    height: 75px;
+    width: 125px;
+}
+.topnav {
+    overflow: hidden;
+}
+
+.topnav a {
+    float: left;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+#arrowBack {
+    width: auto;
+}
