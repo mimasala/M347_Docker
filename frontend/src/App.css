@@ -1,12 +1,26 @@
-.App {
+div#btns{
     display: flex;
-    flex-wrap: wrap;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    gap: 50px;
+    margin-top: 35%;
 }
 
-#btn{
-    display: flex;
-    flex-direction: column;
+Button {
+    height: 75px;
+    width: 125px;
+}
+.topnav {
+    overflow: hidden;
+}
+
+.topnav a {
+    float: left;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+#arrowBack {
+    width: auto;
 }

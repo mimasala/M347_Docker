@@ -8,7 +8,6 @@ import {
 } from "react-router-dom";
 import Home from "./Home";
 import App from './App'
-import './index.css'
 import './App.css'
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@emotion/react';
