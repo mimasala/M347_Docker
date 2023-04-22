@@ -22,8 +22,8 @@ jobs:
         uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
         with:
           registry: ${{ env.REGISTRY }}
-          username: mimasala
-          password: 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
+          username: ${{ secrets.GH_PACKAGES_USERNAME }}
+          password: ${{ secrets.GH_PACKAGES_TOKEN }}
 
       - name: Extract metadata (tags, labels) for Docker
         id: meta
