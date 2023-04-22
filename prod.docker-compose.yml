@@ -5,10 +5,11 @@ services:
       POSTGRES_USER: pgWorkout
       POSTGRES_PASSWORD: jhhjhjghgdgfghkjgfghjkkhgfhjkljhgfghjkljhgfhjklelbgajhvapirgulökhabrgönNAEÖVBJN123
       PGDATA: /data/postgres
+      POSTGRES_DB: pgWorkout
     volumes:
       - postgres:/data/postgres
     ports:
-      - '5432'
+      - "5432:5432"
     networks:
       - postgres
     restart: always
@@ -49,7 +50,7 @@ services:
       - pgadmin
       - postgres
     environment:
-      - spring.datasource.url=jdbc:postgresql://postgres:5432/postgres
+      - spring.datasource.url=jdbc:postgresql://172.19.0.2:5432/pgWorkout
 
 networks:
   postgres:
