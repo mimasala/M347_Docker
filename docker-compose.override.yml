@@ -1,6 +1,5 @@
 services:
   postgres:
-    container_name: workoutpg
     image: postgres
     environment:
       POSTGRES_USER: pgWorkout
@@ -9,10 +8,10 @@ services:
     volumes:
       - postgres:/data/postgres
     ports:
-      - "5432:5432"
+      - '5432'
     networks:
       - postgres
-    restart: unless-stopped
+    restart: always
 
   pgadmin:
     container_name: pgadmin
@@ -50,9 +49,7 @@ services:
       - pgadmin
       - postgres
     environment:
-      - spring.datasource.url=jdbc:postgresql://workoutpg:5432/postgres
-
-
+      - spring.datasource.url=jdbc:postgresql://postgres:5432/postgres
 
 networks:
   postgres:
