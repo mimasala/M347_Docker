@@ -1,0 +1,301 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  creationTimestamp: null
+  name: m347-docker-workout-network
+spec:
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              io.kompose.network/m347-docker-workout-network: "true"
+  podSelector:
+    matchLabels:
+      io.kompose.network/m347-docker-workout-network: "true"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: C:\ProgramData\chocolatey\lib\kubernetes-kompose\tools\kompose.exe --file ..\deploy.docker-compose.yml convert
+    kompose.version: 1.28.0 (c4137012e)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: pgadmin
+  name: pgadmin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: pgadmin
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: C:\ProgramData\chocolatey\lib\kubernetes-kompose\tools\kompose.exe --file ..\deploy.docker-compose.yml convert
+        kompose.version: 1.28.0 (c4137012e)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/m347-docker-workout-network: "true"
+        io.kompose.service: pgadmin
+    spec:
+      containers:
+        - env:
+            - name: PGADMIN_CONFIG_SERVER_MODE
+              value: "False"
+            - name: PGADMIN_DEFAULT_EMAIL
+              value: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
+            - name: PGADMIN_DEFAULT_PASSWORD
+              value: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+          image: dpage/pgadmin4
+          name: pgadmin
+          ports:
+            - containerPort: 80
+          resources: {}
+          volumeMounts:
+            - mountPath: /var/lib/pgadmin
+              name: pgadmin
+      restartPolicy: Always
+      volumes:
+        - name: pgadmin
+          persistentVolumeClaim:
+            claimName: pgadmin
+status: {}
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: pgadmin
+  name: pgadmin
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Mi
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: C:\ProgramData\chocolatey\lib\kubernetes-kompose\tools\kompose.exe --file ..\deploy.docker-compose.yml convert
+    kompose.version: 1.28.0 (c4137012e)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: pgadmin
+  name: pgadmin
+spec:
+  ports:
+    - name: "5050"
+      port: 5050
+      targetPort: 80
+  selector:
+    io.kompose.service: pgadmin
+status:
+  loadBalancer: {}
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: postgres
+  name: postgres
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Mi
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: C:\ProgramData\chocolatey\lib\kubernetes-kompose\tools\kompose.exe --file ..\deploy.docker-compose.yml convert
+    kompose.version: 1.28.0 (c4137012e)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: workout-backend
+  name: workout-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: workout-backend
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: C:\ProgramData\chocolatey\lib\kubernetes-kompose\tools\kompose.exe --file ..\deploy.docker-compose.yml convert
+        kompose.version: 1.28.0 (c4137012e)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/m347-docker-workout-network: "true"
+        io.kompose.service: workout-backend
+    spec:
+      containers:
+        - env:
+            - name: DB_PASSWORD
+              value: jhhjhjghgdgfghkjgfghjkkhgfhjkljhgfghjkljhgfhjklelbgajhvapirgulökhabrgönNAEÖVBJN123
+            - name: DB_USER
+              value: pgWorkout
+            - name: spring.datasource.url
+              value: jdbc:postgresql://workout_postgres:5432/pgWorkout
+          image: mimasala/workout-backend:main
+          name: workout-backend
+          ports:
+            - containerPort: 9876
+          resources: {}
+      restartPolicy: Always
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: C:\ProgramData\chocolatey\lib\kubernetes-kompose\tools\kompose.exe --file ..\deploy.docker-compose.yml convert
+    kompose.version: 1.28.0 (c4137012e)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: workout-frontend
+  name: workout-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: workout-frontend
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: C:\ProgramData\chocolatey\lib\kubernetes-kompose\tools\kompose.exe --file ..\deploy.docker-compose.yml convert
+        kompose.version: 1.28.0 (c4137012e)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/m347-docker-workout-network: "true"
+        io.kompose.service: workout-frontend
+    spec:
+      containers:
+        - image: mimasala/workout-frontend:main
+          name: workout-frontend
+          ports:
+            - containerPort: 8080
+          resources: {}
+      restartPolicy: Always
+status: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: C:\ProgramData\chocolatey\lib\kubernetes-kompose\tools\kompose.exe --file ..\deploy.docker-compose.yml convert
+    kompose.version: 1.28.0 (c4137012e)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: workout-postgres
+  name: workout-postgres
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: workout-postgres
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: C:\ProgramData\chocolatey\lib\kubernetes-kompose\tools\kompose.exe --file ..\deploy.docker-compose.yml convert
+        kompose.version: 1.28.0 (c4137012e)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/m347-docker-workout-network: "true"
+        io.kompose.service: workout-postgres
+    spec:
+      containers:
+        - env:
+            - name: PGDATA
+              value: /data/postgres
+            - name: POSTGRES_PASSWORD
+              value: jhhjhjghgdgfghkjgfghjkkhgfhjkljhgfghjkljhgfhjklelbgajhvapirgulökhabrgönNAEÖVBJN123
+            - name: POSTGRES_USER
+              value: pgWorkout
+          image: postgres
+          name: workout-postgres
+          ports:
+            - containerPort: 5432
+          resources: {}
+          volumeMounts:
+            - mountPath: /data/postgres
+              name: postgres
+      restartPolicy: Always
+      volumes:
+        - name: postgres
+          persistentVolumeClaim:
+            claimName: postgres
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: C:\ProgramData\chocolatey\lib\kubernetes-kompose\tools\kompose.exe --file ..\deploy.docker-compose.yml convert
+    kompose.version: 1.28.0 (c4137012e)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: workout-backend
+  name: workout_backend
+spec:
+  ports:
+    - name: "9876"
+      port: 9876
+      targetPort: 9876
+  selector:
+    io.kompose.service: workout-backend
+status:
+  loadBalancer: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: C:\ProgramData\chocolatey\lib\kubernetes-kompose\tools\kompose.exe --file ..\deploy.docker-compose.yml convert
+    kompose.version: 1.28.0 (c4137012e)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: workout-frontend
+  name: workout_frontend
+spec:
+  ports:
+    - name: "8080"
+      port: 8080
+      targetPort: 8080
+  selector:
+    io.kompose.service: workout-frontend
+status:
+  loadBalancer: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: C:\ProgramData\chocolatey\lib\kubernetes-kompose\tools\kompose.exe --file ..\deploy.docker-compose.yml convert
+    kompose.version: 1.28.0 (c4137012e)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: workout-postgres
+  name: workout_postgres
+spec:
+  ports:
+    - name: "5432"
+      port: 5432
+      targetPort: 5432
+  selector:
+    io.kompose.service: workout-postgres
+status:
+  loadBalancer: {}
