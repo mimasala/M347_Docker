@@ -299,3 +299,14 @@ spec:
     io.kompose.service: workout-postgres
 status:
   loadBalancer: {}
+---
+apiVersion: v1
+kind: Route
+metadata:
+  name: frontend-route
+spec:
+  port:
+    targetPort: 3000-tcp
+  to:
+    kind: Service
+    name: workout-frontend
