@@ -146,7 +146,7 @@ spec:
             - name: DB_USER
               value: pgWorkout
             - name: spring.datasource.url
-              value: jdbc:postgresql://workout_postgres:5432/pgWorkout
+              value: jdbc:postgresql://workout-postgres:5432/pgWorkout
           image: mimasala/workout-backend:main
           name: workout-backend
           ports:
@@ -249,7 +249,7 @@ metadata:
   creationTimestamp: null
   labels:
     io.kompose.service: workout-backend
-  name: workout_backend
+  name: workout-backend
 spec:
   ports:
     - name: "9876"
@@ -269,7 +269,7 @@ metadata:
   creationTimestamp: null
   labels:
     io.kompose.service: workout-frontend
-  name: workout_frontend
+  name: workout-frontend
 spec:
   ports:
     - name: "8080"
@@ -289,7 +289,7 @@ metadata:
   creationTimestamp: null
   labels:
     io.kompose.service: workout-postgres
-  name: workout_postgres
+  name: workout-postgres
 spec:
   ports:
     - name: "5432"
