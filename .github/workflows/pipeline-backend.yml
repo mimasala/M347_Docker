@@ -5,7 +5,7 @@ on:
     branches:
       - main
 env:
-  REGISTRY: https://index.docker.io/v2/
+  REGISTRY: https://index.docker.io/v2
   IMAGE_NAME: workout-backend
 
 jobs:
