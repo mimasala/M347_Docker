@@ -24,7 +24,7 @@
 DB: `docker run --publish=7474:7474 --publish=7687:7687 -e 'NEO4J_AUTH=neo4j/secret' neo4j:5`
 
 ### Build backend 
-`docker build --build-arg JAR_FILE=target/*.jar -t myorg/myapp .`
+`docker build -t myorg/myapp .`
 
 run:
 `docker run -p 8080:8080 myorg/myapp`

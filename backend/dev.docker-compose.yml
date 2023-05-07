@@ -1,6 +1,6 @@
 services:
-  postgres:
-    container_name: postgres-sql
+  workout_postgres:
+    container_name: workout_postgres
     image: postgres
     environment:
       POSTGRES_USER: pgWorkout
