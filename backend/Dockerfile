@@ -5,5 +5,5 @@ RUN mvn -f /usr/src/app/pom.xml clean package
 
 FROM eclipse-temurin:17-jdk-alpine
 COPY --from=build /usr/src/app/target/*.jar /usr/app/*.jar
-EXPOSE 8080
+EXPOSE 9876
 ENTRYPOINT ["java","-jar","-Xmx4g","/usr/app/*.jar"]
