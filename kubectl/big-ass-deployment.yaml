@@ -300,13 +300,25 @@ spec:
 status:
   loadBalancer: {}
 ---
-apiVersion: v1
-kind: Route
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
-  name: frontend-route
+  name: http-ingress
 spec:
-  port:
-    targetPort: 3000-tcp
-  to:
-    kind: Service
-    name: workout-frontend
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: workout-frontend
+                port:
+                  number: 8080
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: workout-backend
+                port:
+                  number: 9876
