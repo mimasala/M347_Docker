@@ -26,5 +26,7 @@ services:
       - workout_postgres
     environment:
       - spring.datasource.url=jdbc:postgresql://workout_postgres:5432/pgWorkout
+      - DB_PASSWORD=jhhjhjghgdgfghkjgfghjkkhgfhjkljhgfghjkljhgfhjklelbgajhvapirgulökhabrgönNAEÖVBJN123
+      - DB_USER=pgWorkout
     networks:
       - postgres
