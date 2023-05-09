@@ -1,3 +1,4 @@
+version: "3"
 services:
   workout-postgres:
     container_name: workout-postgres
