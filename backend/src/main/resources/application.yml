@@ -2,9 +2,9 @@ spring:
   sql.init.mode: always
   jpa.defer-datasource-initialization: true
   datasource:
-    url: ${DB_URL}
-    username: ${DB_USER}
-    password: ${DB_PASSWORD}
+    url: jdbc:postgresql://workout_postgres:5432/pgWorkout
+    username: pgWorkout
+    password: jhhjhjghgdgfghkjgfghjkkhgfhjkljhgfghjkljhgfhjklelbgajhvapirgulökhabrgönNAEÖVBJN123
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
