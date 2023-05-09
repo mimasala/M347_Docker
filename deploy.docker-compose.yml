@@ -1,6 +1,6 @@
 services:
-  workout_postgres:
-    container_name: workout_postgres
+  workout-postgres:
+    container_name: workout-postgres
     image: postgres
     environment:
       POSTGRES_USER: pgWorkout
@@ -11,27 +11,27 @@ services:
     ports:
       - "5432:5432"
     networks:
-      - workout_network
+      - workout-network
     restart: unless-stopped
 
-  workout_frontend:
+  workout-frontend:
     image: mimasala/workout-frontend:main
-    container_name: workout_frontend
+    container_name: workout-frontend
     ports:
       - "8080:8080"
     networks:
-      - workout_network
+      - workout-network
 
-  workout_backend:
+  workout-backend:
     image: mimasala/workout-backend:main
-    container_name: workout_backend
+    container_name: workout-backend
     ports:
       - "9876:9876"
     depends_on:
       - pgadmin
-      - workout_postgres
+      - workout-postgres
     environment:
-      - spring.datasource.url=jdbc:postgresql://workout_postgres:5432/pgWorkout
+      - spring.datasource.url=jdbc:postgresql://workout-postgres:5432/pgWorkout
       - DB_PASSWORD=jhhjhjghgdgfghkjgfghjkkhgfhjkljhgfghjkljhgfhjklelbgajhvapirgulökhabrgönNAEÖVBJN123
       - DB_USER=pgWorkout
     networks:
@@ -49,11 +49,11 @@ services:
     ports:
       - "5050:80"
     networks:
-      - workout_network
+      - workout-network
     restart: unless-stopped
 
 networks:
-  workout_network:
+  workout-network:
     driver: bridge
 
 volumes:
