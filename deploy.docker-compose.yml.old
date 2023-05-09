@@ -1,0 +1,61 @@
+services:
+  workout_postgres:
+    container_name: workout_postgres
+    image: postgres
+    environment:
+      POSTGRES_USER: pgWorkout
+      POSTGRES_PASSWORD: jhhjhjghgdgfghkjgfghjkkhgfhjkljhgfghjkljhgfhjklelbgajhvapirgulökhabrgönNAEÖVBJN123
+      PGDATA: /data/postgres
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - workout_network
+    restart: unless-stopped
+
+  workout_frontend:
+    image: mimasala/workout-frontend:main
+    container_name: workout_frontend
+    ports:
+      - "8080:8080"
+    networks:
+      - workout_network
+
+  workout_backend:
+    image: mimasala/workout-backend:main
+    container_name: workout_backend
+    ports:
+      - "9876:9876"
+    depends_on:
+      - pgadmin
+      - workout_postgres
+    environment:
+      - spring.datasource.url=jdbc:postgresql://workout_postgres:5432/pgWorkout
+      - DB_PASSWORD=jhhjhjghgdgfghkjgfghjkkhgfhjkljhgfghjkljhgfhjklelbgajhvapirgulökhabrgönNAEÖVBJN123
+      - DB_USER=pgWorkout
+    networks:
+      - workout_network
+
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+    ports:
+      - "5050:80"
+    networks:
+      - workout_network
+    restart: unless-stopped
+
+networks:
+  workout_network:
+    driver: bridge
+
+volumes:
+  postgres:
+  pgadmin:
