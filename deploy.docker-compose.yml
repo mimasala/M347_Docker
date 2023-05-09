@@ -6,6 +6,7 @@ services:
     environment:
       POSTGRES_USER: pgWorkout
       POSTGRES_PASSWORD: jhhjhjghgdgfghkjgfghjkkhgfhjkljhgfghjkljhgfhjklelbgajhvapirgulökhabrgönNAEÖVBJN123
+      POSTGRES_DB: pgWorkout
       PGDATA: /data/postgres
     volumes:
       - postgres:/data/postgres
