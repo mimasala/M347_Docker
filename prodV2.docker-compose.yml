@@ -1,0 +1,35 @@
+services:
+  workout_postgres:
+    container_name: workout_postgres
+    image: postgres
+    environment:
+      POSTGRES_USER: pgWorkout
+      POSTGRES_PASSWORD: jhhjhjghgdgfghkjgfghjkkhgfhjkljhgfghjkljhgfhjklelbgajhvapirgulökhabrgönNAEÖVBJN123
+      PGDATA: /data/postgres
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+
+  workout_frontend:
+    image: mimasala/workout-frontend:main
+    container_name: workout_frontend
+    ports:
+      - "8080:8080"
+
+  workout_backend:
+    image: mimasala/workout-backend:main
+    container_name: workout_backend
+    ports:
+      - "9876:9876"
+    depends_on:
+      - workout_postgres
+    environment:
+      - spring.datasource.url=jdbc:postgresql://workout_postgres:5432/pgWorkout
+      - DB_PASSWORD=jhhjhjghgdgfghkjgfghjkkhgfhjkljhgfghjkljhgfhjklelbgajhvapirgulökhabrgönNAEÖVBJN123
+      - DB_USER=pgWorkout
+
+
+volumes:
+  postgres:
